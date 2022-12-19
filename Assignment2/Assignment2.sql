@@ -4,6 +4,12 @@ INSERT INTO Store(storeID, storeName, storeLocation) VALUES('3','Palas','Iasi')
 INSERT INTO Store(storeID, storeName, storeLocation) VALUES('4','Palas','Bucuresti')
 INSERT INTO Store(storeID, storeName, storeLocation) VALUES('5','Afi','Bucuresti')
 
+INSERT INTO Shop(shopID, storeID, shopName) VALUES('1','1','Zara')
+INSERT INTO Shop(shopID, storeID, shopName) VALUES('2','1','Bershka')
+INSERT INTO Shop(shopID, storeID, shopName) VALUES('3','2','Zara')
+INSERT INTO Shop(shopID, storeID, shopName) VALUES('4','2','Stradivarius')
+INSERT INTO Shop(shopID, storeID, shopName) VALUES('5','2','H&M')
+
 INSERT INTO ShopAssistent(shopAssistentID,shopID,FName,LName,salary) VALUES ('1','1','Ana','Popescu',1400)
 INSERT INTO ShopAssistent(shopAssistentID,shopID,FName,LName,salary) VALUES ('2','1','Georgiana','Ionescu',12000)
 INSERT INTO ShopAssistent(shopAssistentID,shopID,FName,LName,salary) VALUES ('3','3','Maria','Pop',7000)

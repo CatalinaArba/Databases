@@ -43,11 +43,7 @@ CREATE TABLE Shop
 storeID CHAR(10) FOREIGN KEY REFERENCES Store(storeID),
 shopName VARCHAR(30),
 )
-INSERT INTO Shop(shopID, storeID, shopName) VALUES('1','1','Zara')
-INSERT INTO Shop(shopID, storeID, shopName) VALUES('2','1','Bershka')
-INSERT INTO Shop(shopID, storeID, shopName) VALUES('3','2','Zara')
-INSERT INTO Shop(shopID, storeID, shopName) VALUES('4','2','Stradivarius')
-INSERT INTO Shop(shopID, storeID, shopName) VALUES('5','2','H&M')
+
 
 CREATE TABLE ShopAssistent
 (shopAssistentID CHAR(10) PRIMARY KEY,
@@ -81,7 +77,7 @@ CREATE TABLE Transactions
 customerID CHAR(10) FOREIGN KEY REFERENCES Customers(customerID),
 shopID CHAR(10) FOREIGN KEY REFERENCES Shop(ShopID),
 )
-ALTER TABLE Transactions ADD transactionDate date
+--ALTER TABLE Transactions ADD transactionDate date
 
 
 

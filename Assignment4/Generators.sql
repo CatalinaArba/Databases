@@ -120,7 +120,7 @@ BEGIN
 							END
 						ELSE
 							-- string case
-							IF @dataType = 'varchar'
+							IF @dataType = 'varchar' OR @dataType = 'char'
 								BEGIN
 									-- get a random value from the values in the referenced table
 									DECLARE @getStringQuery NVARCHAR(200)
@@ -141,7 +141,7 @@ BEGIN
 								SET @insertQuery = @insertQuery + CAST(@intValue AS NVARCHAR(10)) + ','
 							END
 						ELSE
-							IF @dataType = 'varchar'
+							IF @dataType = 'varchar' OR @dataType = 'char'
 								BEGIN
 									-- generate a random string
 									EXEC generateRandomString @stringValue OUTPUT
@@ -161,7 +161,7 @@ BEGIN
 					WHERE TABLE_NAME = @tableName AND COLUMN_NAME = @columnName AND CONSTRAINT_NAME LIKE 'PK%')
 					BEGIN
 						SET @hasPK = 1
-						IF @dataType = 'varchar'
+						IF @dataType = 'varchar'OR @dataType = 'char'
 							BEGIN
 								SET @checkIfPKQuery = @checkIfPKQuery + @columnName + '=''' + @stringValue + ''' AND '
 							END
