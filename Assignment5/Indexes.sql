@@ -86,9 +86,3 @@ FROM viewC
 CREATE NONCLUSTERED INDEX indexForeignKey ON Tc(aid)
 DROP INDEX indexForeignKey ON Tc
 
-CREATE NONCLUSTERED INDEX indexC
-ON Ta(a3) INCLUDE (a2)
-
-DROP INDEX indexC ON Ta
---before 0.003392
---after  0.003392
