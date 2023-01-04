@@ -1,0 +1,90 @@
+User:
+	userID
+	name unique,
+	pen name,
+	yob,
+Externam awards: 
+	awardID
+	userid foreign key
+	name
+Internal competitions :
+	competiotionID
+	Year
+	week
+poems
+	poemID
+	userID foreign key
+	competionID foreign key
+	title
+	text
+judges
+	judgeID
+	name
+	
+evaluate:
+	poemID foreign key
+	judgeId foreign key
+	points
+	primaryKey(poemID,judgeID)
+
+
+1:m user-poems
+1:m user-externam awards
+
+CREATE TABLE users (
+  userID INTEGER PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  pen_name VARCHAR(255),
+  yob INTEGER NOT NULL
+);
+
+CREATE TABLE external_awards (
+  awardID INTEGER PRIMARY KEY,
+  userID INTEGER NOT NULL,
+  FOREIGN KEY (userID) REFERENCES users(userID),
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE internal_competitions (
+  competitionID INTEGER PRIMARY KEY,
+  year INTEGER NOT NULL,
+  week INTEGER NOT NULL
+);
+
+CREATE TABLE poems (
+  poemID INTEGER PRIMARY KEY,
+  userID INTEGER NOT NULL,
+  competitionID INTEGER NOT NULL,
+  FOREIGN KEY (userID) REFERENCES users(userID),
+  FOREIGN KEY (competitionID) REFERENCES internal_competitions(competitionID),
+  title VARCHAR(255) NOT NULL,
+  text TEXT NOT NULL
+);
+
+CREATE TABLE judges (
+  judgeID INTEGER PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE evaluations (
+  poemID INTEGER NOT NULL,
+  judgeID INTEGER NOT NULL,
+  points INTEGER NOT NULL,
+  PRIMARY KEY (poemID, judgeID),
+  FOREIGN KEY (poemID) REFERENCES poems(poemID),
+  FOREIGN KEY (judgeID) REFERENCES judges(judgeID)
+);
+
+INSERT INTO Users  VALUES(1,'Ana', 'Pen1',2001),(2,'Maria', 'Pen2',2002)
+INSERT INTO  Awards VALUES (1,1 ,'Cel mai bun poem'),(2,2, 'Cel mai frumos poem')
+INSERT INTO Competitions  VALUES (1,2020,1),(2,2021,2)
+INSERT INTO  Poems  VALUES (1,1,1,'Sara pe deal','cnjsndciswn'),(2,1,1,'Lacul','dixsdisd'),(3,2,1,'Stele','xnsaini'),(4,2,2,'Nuferi','dicdsid')
+INSERT INTO Judges  VALUES(1,'Mihai Petre'),(2,'Elvira Petre')
+INSERT INTO Evaluate  VALUES (1,1,5),(1,2,8),(2,1,4),(2,2,5),(3,1,10),(3,2,10),(4,1,1),(4,2,2)
+
+select * from Users
+select * from Awards
+select * from Competitions
+select * from Poems
+select * from Judges
+select * from Evaluate
